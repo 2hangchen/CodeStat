@@ -1,0 +1,18 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 54546,
+    "log_level": "info",
+    "log_file": "~/.local-mcp-server/server.log"
+  },
+  "database": {
+    "path": "~/.local-mcp-server/db.sqlite",
+    "backup_path": "~/.local-mcp-server/backup/",
+    "clean_cycle": 30
+  },
+  "cli": {
+    "cache_time": 300,
+    "default_time_range": 7
+  }
+}
+

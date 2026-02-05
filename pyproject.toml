@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aicodestat"
+version = "0.0.1"
+description = "A local-first metrics tool that analyzes how you use AI coding assistants."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.0.0",
+    "rich>=13.0.0",
+    "questionary>=2.0.0",
+    "httpx>=0.25.0",
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.scripts]
+code-stat = "main:main"
+local-mcp-server = "local_mcp_server:main"
+code-stat-cli = "cli.main:main"
+code-stat-mcp = "mcp_stdio_server:main"
+
+[tool.setuptools]
+# 显式指定要打包的包（排除 specs、tests 等构建/测试目录）
+packages = ["cli", "compute", "mcp", "storage", "utils"]
+# 顶层的单文件模块（作为脚本入口依赖）也一并打包
+py-modules = ["main", "local_mcp_server", "config", "logging_config", "service_manager"]
+
